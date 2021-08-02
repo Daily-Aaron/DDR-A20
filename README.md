@@ -1,6 +1,7 @@
 Another Inori's Theme Edit
 
 // ENGLISH
+
 Hey you guys! This is Curilang now in Github, please follow the instructions and recommendations:
 1) Change your region in the file "Region.lua", this file has to be in Themes folder, not inside the theme.
 2) VERY IMPORTANT!, Configure your buttons, specially "MenuLeft, MenuRight, MenuUp, MenuDown". This is for use the
@@ -15,8 +16,11 @@ It was a lot of effort to do this, so you will have to tell us. If we see any in
 Give the respective credits if you are going to upload videos in YouTube, Twitch, Facebook, Instagram, TikTok, etc.
 7) There's another screen called "Game Options" (In Stepmania Options), there you can choose if you want to show the Cut-Ins during
    the gameplay, GuideLines, ShockArrows (Mines) Increments combo, Change the Version (A20, A20+), Model (GOLD, BLUE), etc.
+8) ⚠️ If you are going to use D3D, please turn the option High-res textures to Force Off in 
+   Stepmania options/"Graphics/Sound Options"/High-res textures. If you use openGL, don't do this step.⚠️
 
 //ESPAÑOL
+
 Qué tal chicos! Curilang aquí ahora en Github, por favor sigue las instrucciones y recomendaciones.
 1) Cambia tu región en el archivo "Region.lua", este archivo debe estar en la carpeta Themes, no dentro del tema.
 2) MUY IMPORTANTE! Configura tus botones, especialmente "MenuIzquierda, MenuDerecha, MenuArriba, MenuAbajo". Esto es
@@ -32,3 +36,5 @@ Da los créditos correspondientes si tu vas a subir videos a YouTube, Twitch, Fa
 7) Hay una nueva parte llamada "Game Options" (en las opciones de Stepmania), ahí puedes escoger si quieres que se vean los 
    Cut-Ins durante el gameplay, Lineas de guía (GuideLines), si quieres que los ShockArrows (minas) incrementen el combo
    Versión (A20, A20+), Modelo (GOLD, BLUE), etc.
+8) ⚠️ SI VAS A USAR EL PROCESADOR D3D, TE RECOMIENDO IR A "Stepmania options/"Graphics/Sound Options"/High-res textures."
+      Y DARLE EN "Force Off". Si estás usando openGL no hagas esto.⚠️
