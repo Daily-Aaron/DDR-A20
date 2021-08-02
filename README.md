@@ -2,6 +2,11 @@ Another Inori's Theme Edit
 
 // ENGLISH
 
+PLEASE DOWNLOAD THE DANCING CHARACTERS AND STAGES!! IT'S VERY IMPORTANT!!! WITHOUT THEM THE THEME
+WON'T WORK!!
+
+https://github.com/Enciso0720/DanceDanceRevolution
+
 Hey you guys! This is Curilang now in Github, please follow the instructions and recommendations:
 1) Change your region in the file "Region.lua", this file has to be in Themes folder, not inside the theme.
 2) VERY IMPORTANT!, Configure your buttons, specially "MenuLeft, MenuRight, MenuUp, MenuDown". This is for use the
@@ -20,6 +25,10 @@ Give the respective credits if you are going to upload videos in YouTube, Twitch
    Stepmania options/"Graphics/Sound Options"/High-res textures. If you use openGL, don't do this step.⚠️
 
 //ESPAÑOL
+
+POR FAVOR DESCARGA LOS DANCING CHARACTERS Y STAGES!! ES MUY IMPORTANTE!!! SIN ELLOS EL TEMA NO FUNCIONARÁ!!!
+
+https://github.com/Enciso0720/DanceDanceRevolution
 
 Qué tal chicos! Curilang aquí ahora en Github, por favor sigue las instrucciones y recomendaciones.
 1) Cambia tu región en el archivo "Region.lua", este archivo debe estar en la carpeta Themes, no dentro del tema.
