@@ -9,6 +9,11 @@ https://github.com/Enciso0720/DanceDanceRevolution
 
 Hey you guys! This is Curilang now in Github, please follow the instructions and recommendations:
 1) Change your region in the file "Region.lua", this file has to be in Themes folder, not inside the theme.
+
+https://github.com/Curilang/Region.lua-file
+
+Please download the Region.lua file, with it the theme won't work!
+
 2) VERY IMPORTANT!, Configure your buttons, specially "MenuLeft, MenuRight, MenuUp, MenuDown". This is for use the
    correct buttons in the theme.
 3) Please, activate the option "Only Dedicated Buttons" In Stepmania Options/Input Options/Menu Buttons.
@@ -32,6 +37,11 @@ https://github.com/Enciso0720/DanceDanceRevolution
 
 Qué tal chicos! Curilang aquí ahora en Github, por favor sigue las instrucciones y recomendaciones.
 1) Cambia tu región en el archivo "Region.lua", este archivo debe estar en la carpeta Themes, no dentro del tema.
+
+https://github.com/Curilang/Region.lua-file
+
+Por favor descarga el archivo Region.lua, sin él el tema no va a funcionar.
+
 2) MUY IMPORTANTE! Configura tus botones, especialmente "MenuIzquierda, MenuDerecha, MenuArriba, MenuAbajo". Esto es
    para que el tema funcione con los controles correctos.
 3) Por favor, activa la opción "Solo botones dedicados (Only Dedicated buttons)" en las opciones de Stepmania/Input Options/Menu Buttons.
