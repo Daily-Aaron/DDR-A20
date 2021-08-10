@@ -102,19 +102,21 @@ return Def.ActorFrame {
 	Def.Sprite {
 		InitCommand=function(self)
 			self:x(-119);
-			if GAMESTATE:PlayerIsUsingModifier(PLAYER_1,'hidden') then
-				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_appear_hidden"));
-			elseif GAMESTATE:PlayerIsUsingModifier(PLAYER_1,'sudden') then
-				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_appear_sudden"));
-			elseif GAMESTATE:PlayerIsUsingModifier(PLAYER_1,'stealth') then
-				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_appear_stealth"));
-			elseif GAMESTATE:PlayerIsUsingModifier(PLAYER_1,'visible') then
+			local PlayerUID = PROFILEMAN:GetProfile(PLAYER_1):GetGUID()
+			local MyValue = ReadOrCreateAppearancePlusValueForPlayer(PlayerUID,MyValue);
+			if MyValue == "Visible" then
 				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_off"));
-			elseif GAMESTATE:PlayerIsUsingModifier(PLAYER_1,'hidden+') then
+			elseif MyValue == "Hidden" then
+				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_appear_hidden"));
+			elseif MyValue == "Sudden" then
+				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_appear_sudden"));
+			elseif MyValue == "Stealth" then
+				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_appear_stealth"));
+			elseif MyValue == "Hidden+" then
 				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_hidden+"));
-            elseif GAMESTATE:PlayerIsUsingModifier(PLAYER_1,'sudden+') then
+			elseif MyValue == "Sudden+" then
 				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_sudden+"));
-			elseif GAMESTATE:PlayerIsUsingModifier(PLAYER_1,'hidden+&sudden+') then
+			elseif MyValue == "Hidden+&Sudden+" then
 				self:Load(THEME:GetPathB("","optionicon_P1/daopic0000_1p_appear_hs+"));
 			end;
 		end;
