@@ -9,6 +9,11 @@ https://github.com/Enciso0720/DanceDanceRevolution
 
 Hey you guys! This is Curilang now in Github, please follow the instructions and recommendations:
 1) Change your region in the file "Region.lua", this file has to be in Themes folder, not inside the theme.
+
+https://github.com/Curilang/Region.lua-file
+
+Please download the Region.lua file, with it the theme won't work!
+
 2) VERY IMPORTANT!, Configure your buttons, specially "MenuLeft, MenuRight, MenuUp, MenuDown". This is for use the
    correct buttons in the theme.
 3) Please, activate the option "Only Dedicated Buttons" In Stepmania Options/Input Options/Menu Buttons.
@@ -21,8 +26,9 @@ It was a lot of effort to do this, so you will have to tell us. If we see any in
 Give the respective credits if you are going to upload videos in YouTube, Twitch, Facebook, Instagram, TikTok, etc.
 7) There's another screen called "Game Options" (In Stepmania Options), there you can choose if you want to show the Cut-Ins during
    the gameplay, GuideLines, ShockArrows (Mines) Increments combo, Change the Version (A20, A20+), Model (GOLD, BLUE), etc.
-8) ⚠️ If you are going to use D3D, please turn the option High-res textures to Force Off in 
-   Stepmania options/"Graphics/Sound Options"/High-res textures. If you use openGL, don't do this step.⚠️
+8) ⚠️ If you are going to use D3D, you might get a Crash Issue, sometimes the theme forces to crash when your are
+       using the Textures Resolution in 2048. If this happens, go to "Stepmania options/"Graphics/Sound Options"/Textures Resolution." 
+       turn the Textures Resolution in 1024. If you use openGL, don't do this step.⚠️
 
 //ESPAÑOL
 
@@ -32,6 +38,11 @@ https://github.com/Enciso0720/DanceDanceRevolution
 
 Qué tal chicos! Curilang aquí ahora en Github, por favor sigue las instrucciones y recomendaciones.
 1) Cambia tu región en el archivo "Region.lua", este archivo debe estar en la carpeta Themes, no dentro del tema.
+
+https://github.com/Curilang/Region.lua-file
+
+Por favor descarga el archivo Region.lua, sin él el tema no va a funcionar.
+
 2) MUY IMPORTANTE! Configura tus botones, especialmente "MenuIzquierda, MenuDerecha, MenuArriba, MenuAbajo". Esto es
    para que el tema funcione con los controles correctos.
 3) Por favor, activa la opción "Solo botones dedicados (Only Dedicated buttons)" en las opciones de Stepmania/Input Options/Menu Buttons.
@@ -45,5 +56,5 @@ Da los créditos correspondientes si tu vas a subir videos a YouTube, Twitch, Fa
 7) Hay una nueva parte llamada "Game Options" (en las opciones de Stepmania), ahí puedes escoger si quieres que se vean los 
    Cut-Ins durante el gameplay, Lineas de guía (GuideLines), si quieres que los ShockArrows (minas) incrementen el combo
    Versión (A20, A20+), Modelo (GOLD, BLUE), etc.
-8) ⚠️ SI VAS A USAR EL PROCESADOR D3D, TE RECOMIENDO IR A "Stepmania options/"Graphics/Sound Options"/High-res textures."
-      Y DARLE EN "Force Off". Si estás usando openGL no hagas esto.⚠️
+8) ⚠️ SI VAS A USAR EL PROCESADOR D3D, puede que tengas un problema con las texturas si las tienes activadas en 2048, a veces Stepmania suele dar Crash.
+      Si esto pasa, ve a "Stepmania options/"Graphics/Sound Options"/Textures Resolution." y cámbialos a 1024. Si estás usando openGL no hagas esto.⚠️
