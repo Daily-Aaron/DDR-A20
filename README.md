@@ -5,12 +5,12 @@ Another Inori's Theme Edit
 PLEASE DOWNLOAD THE DANCING CHARACTERS AND STAGES!! IT'S VERY IMPORTANT!!! WITHOUT THEM THE THEME
 WON'T WORK!!
 
-https://github.com/Enciso0720/DanceDanceRevolution
+https://github.com/Enciso0720/Enciso0720DDR
 
 Hey you guys! This is Curilang now in Github, please follow the instructions and recommendations:
 1) Change your region in the file "Region.lua", this file has to be in Themes folder, not inside the theme.
 
-https://github.com/Curilang/Region.lua-file
+https://github.com/Curilang/Region.lua
 
 Please download the Region.lua file, with it the theme won't work!
 
@@ -34,12 +34,12 @@ Give the respective credits if you are going to upload videos in YouTube, Twitch
 
 POR FAVOR DESCARGA LOS DANCING CHARACTERS Y STAGES!! ES MUY IMPORTANTE!!! SIN ELLOS EL TEMA NO FUNCIONARÁ!!!
 
-https://github.com/Enciso0720/DanceDanceRevolution
+https://github.com/Enciso0720/Enciso0720DDR
 
 Qué tal chicos! Curilang aquí ahora en Github, por favor sigue las instrucciones y recomendaciones.
 1) Cambia tu región en el archivo "Region.lua", este archivo debe estar en la carpeta Themes, no dentro del tema.
 
-https://github.com/Curilang/Region.lua-file
+https://github.com/Curilang/Region.lua
 
 Por favor descarga el archivo Region.lua, sin él el tema no va a funcionar.
 
