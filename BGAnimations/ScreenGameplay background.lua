@@ -1425,6 +1425,8 @@ if BothPlayersEnabled() then
 		string.match(Character_1, "Alice") or
 		string.match(Character_1, "Yuni") or
 		string.match(Character_1, "PiX") or
+		string.match(Character_1, "Zukin") or
+		string.match(Character_1, "Jun") or
 		string.match(Character_1, "Rena") or
 		string.match(Character_1, "Emi") or
 		string.match(Character_1, "Janet")
@@ -1434,6 +1436,7 @@ if BothPlayersEnabled() then
 		string.match(Character_1, "Rage") or
 		string.match(Character_1, "Disco") or
 		string.match(Character_1, "Baby") or
+		string.match(Character_1, "Gus") or
 		string.match(Character_1, "Victory") or
 		string.match(Character_1, "Dred")
 	then
@@ -1450,6 +1453,8 @@ if BothPlayersEnabled() then
 		string.match(Character_2, "Alice") or
 		string.match(Character_2, "Yuni") or
 		string.match(Character_2, "PiX") or
+		string.match(Character_2, "Zukin") or
+		string.match(Character_2, "Jun") or
 		string.match(Character_2, "Rena") or
 		string.match(Character_2, "Emi") or
 		string.match(Character_2, "Janet")
@@ -1459,6 +1464,7 @@ if BothPlayersEnabled() then
 		string.match(Character_2, "Rage") or
 		string.match(Character_2, "Disco") or
 		string.match(Character_2, "Baby") or
+		string.match(Character_2, "Gus") or
 		string.match(Character_2, "Victory") or
 		string.match(Character_2, "Dred")
 	then
@@ -1478,11 +1484,17 @@ if BothPlayersEnabled() then
 		(Char1_Gen == "F" and Char2_Gen == "M") or
 		(Char1_Gen == "R" and Char2_Gen == "M")
 	then
-		DoubleGenre_Choreo = math.random(1,4)
+		DoubleGenre_Choreo = math.random(1,10)
 		if DoubleGenre_Choreo == 1 then Choreo = "Embarr"
 		elseif DoubleGenre_Choreo == 2 then Choreo = "Higher"
 		elseif DoubleGenre_Choreo == 3 then Choreo = "River"
 		elseif DoubleGenre_Choreo == 4 then Choreo = "Love"
+		elseif DoubleGenre_Choreo == 5 then Choreo = "Teo1"
+		elseif DoubleGenre_Choreo == 6 then Choreo = "Wave"
+		elseif DoubleGenre_Choreo == 7 then Choreo = "Phantasma"
+		elseif DoubleGenre_Choreo == 8 then Choreo = "Cute"
+		elseif DoubleGenre_Choreo == 9 then Choreo = "Kimi"
+		elseif DoubleGenre_Choreo == 10 then Choreo = "Marginal"
 		end
 
 	elseif (Char1_Gen == "F" and Char2_Gen == "F") or
@@ -1490,7 +1502,7 @@ if BothPlayersEnabled() then
 	(Char1_Gen == "R" and Char2_Gen == "F") or
 	(Char1_Gen == "F" and Char2_Gen == "R")
 	then
-		DoubleGenre_Choreo = math.random(1,7)
+		DoubleGenre_Choreo = math.random(1,12)
 		if DoubleGenre_Choreo == 1 then Choreo = "Yume"
 		elseif DoubleGenre_Choreo == 2 then Choreo = "Brain"
 		elseif DoubleGenre_Choreo == 3 then Choreo = "Embarr"
@@ -1498,11 +1510,16 @@ if BothPlayersEnabled() then
 		elseif DoubleGenre_Choreo == 5 then Choreo = "Love"
 		elseif DoubleGenre_Choreo == 6 then Choreo = "Luka"
 		elseif DoubleGenre_Choreo == 7 then Choreo = "River"
+		elseif DoubleGenre_Choreo == 8 then Choreo = "Teo1"
+		elseif DoubleGenre_Choreo == 9 then Choreo = "Wave"
+		elseif DoubleGenre_Choreo == 10 then Choreo = "Cute"
+		elseif DoubleGenre_Choreo == 11 then Choreo = "Kimi"
+		elseif DoubleGenre_Choreo == 12 then Choreo = "Marginal"
 		end
 
 
 	elseif (Char1_Gen == "M" and Char2_Gen == "M") then
-		DoubleGenre_Choreo = math.random(1,9)
+		DoubleGenre_Choreo = math.random(1,13)
 		if DoubleGenre_Choreo == 1 then Choreo = "Embarr"
 		elseif DoubleGenre_Choreo == 2 then Choreo = "Specialist"
 		elseif DoubleGenre_Choreo == 3 then Choreo = "Higher"
@@ -1512,21 +1529,34 @@ if BothPlayersEnabled() then
 		elseif DoubleGenre_Choreo == 7 then Choreo = "Seisou"
 		elseif DoubleGenre_Choreo == 8 then Choreo = "Snowman"
 		elseif DoubleGenre_Choreo == 9 then Choreo = "Chaos"
+		elseif DoubleGenre_Choreo == 10 then Choreo = "Teo1"
+		elseif DoubleGenre_Choreo == 11 then Choreo = "Wave"
+		elseif DoubleGenre_Choreo == 12 then Choreo = "Kimi"
+		elseif DoubleGenre_Choreo == 13 then Choreo = "Marginal"
 		end
 	end
 end
 
 
 -------CHARACTER LOAD
-		YND = math.random(1,7)
-		if YND == 1 then Yuni = "F Yume"
+		YND = math.random(1,15)
+		if YND == 1 then Yuni = "F AAAgain"
 		elseif YND == 2 then Yuni = "F Brain"
-		elseif YND == 3 then Yuni = "F Embarr"
-		elseif YND == 4 then Yuni = "F Higher"
-		elseif YND == 5 then Yuni = "F Love"
-		elseif YND == 6 then Yuni = "F Luka"
-		elseif YND == 7 then Yuni = "F River"
+		elseif YND == 3 then Yuni = "F Cute"
+		elseif YND == 4 then Yuni = "F Embarr"
+		elseif YND == 5 then Yuni = "F Higher"
+		elseif YND == 6 then Yuni = "F Kimi"
+		elseif YND == 7 then Yuni = "F Love"
+		elseif YND == 8 then Yuni = "F Luka"
+		elseif YND == 9 then Yuni = "F Marginal"
+		elseif YND == 10 then Yuni = "F Phantasma"
+		elseif YND == 11 then Yuni = "F River"
+		elseif YND == 12 then Yuni = "F Saturation"
+		elseif YND == 13 then Yuni = "F Teo1"
+		elseif YND == 14 then Yuni = "F Wave"
+		elseif YND == 15 then Yuni = "F Yume"
 		end
+	
 if CurrentSong == "Yuni's Nocturnal Days" then
 	t[#t+1] = Def.Model {
 				Meshes="/Characters/(X2) Yuni/model.txt";
