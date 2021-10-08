@@ -25,26 +25,30 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
 				(cmd(y,-2;shadowlength,0;zoomy,0))(self);
 			end;
 			OnCommand=cmd(sleep,0.3;linear,0.3;zoomy,0.85;);
-			-- OffCommand=function(self)
-				-- if IsJoinFrame then
-					-- (cmd(linear,0.1;zoomy,4))(self);
-				-- else
-					-- (cmd(sleep,0.3;linear,0.1;zoomy,4))(self);
-				-- end
-			-- end;
+			OffCommand=function(self)
+				if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+					if IsJoinFrame then
+						(cmd(linear,0.1;zoomy,0))(self);
+					else
+						(cmd(sleep,0.3;linear,0.1;zoomy,0))(self);
+					end
+				end;
+			end;
 		};
     LoadActor( THEME:GetPathG("","ScreenSelectProfile/BG02") ) .. {
 			InitCommand=function(self)
 				(cmd(y,-0;zoomy,0))(self);
 			end;
 			OnCommand=cmd(sleep,0.3;linear,0.3;zoomy,1;);
-			-- OffCommand=function(self)
-				-- if IsJoinFrame then
-					-- (cmd(linear,0.1;zoomy,0))(self);
-				-- else
-					-- (cmd(sleep,0.3;linear,0.1;zoomy,0))(self);
-				-- end
-			-- end;
+			OffCommand=function(self)
+				if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+					if IsJoinFrame then
+						(cmd(linear,0.1;zoomy,0))(self);
+					else
+						(cmd(sleep,0.3;linear,0.1;zoomy,0))(self);
+					end
+				end;
+			end;
 		};
 	LoadActor( THEME:GetPathG("","ScreenSelectProfile/"..lang.."_sceawi_card_save_data_load_end") )..{
       InitCommand=cmd(diffusealpha,0;zoom,0.75;y,-164);
@@ -177,18 +181,20 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
       end;
     };
     Def.ActorFrame{
-      Name="Topper";
-      InitCommand=function(self)
-        (cmd(shadowlength,0))(self);
-      end;
-      OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,-238;);
-      -- OffCommand=function(self)
-				-- if IsJoinFrame then
-					-- (cmd(linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
-				-- else
-					-- (cmd(sleep,0.3;linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
-				-- end
-			-- end;
+		Name="Topper";
+		InitCommand=function(self)
+			(cmd(shadowlength,0))(self);
+		end;
+		OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,-238;);
+		OffCommand=function(self)
+			if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+				if IsJoinFrame then
+					(cmd(linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
+				else
+					(cmd(sleep,0.3;linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
+				end
+			end;
+		end;
       LoadActor( THEME:GetPathG("","ScreenSelectProfile/"..ddrgame.."sceawi_frame_top") )..{
         InitCommand=function(self)
 			self:valign(1.04)
@@ -210,18 +216,20 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
       };
     };
     Def.ActorFrame{
-      Name="Bottom";
-      InitCommand=function(self)
-        (cmd(shadowlength,0))(self);
-      end;
-      OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,224;);
-      -- OffCommand=function(self)
-				-- if IsJoinFrame then
-					-- (cmd(linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
-				-- else
-					-- (cmd(sleep,0.3;linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
-				-- end
-			-- end;
+		Name="Bottom";
+		InitCommand=function(self)
+			(cmd(shadowlength,0))(self);
+		end;
+		OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,224;);
+		OffCommand=function(self)
+			if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+				if IsJoinFrame then
+					(cmd(linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
+				else
+					(cmd(sleep,0.3;linear,0.1;y,0;sleep,0;diffusealpha,0))(self);
+				end
+			end;
+		end;
       LoadActor( THEME:GetPathG("","ScreenSelectProfile/"..ddrgame.."sceawi_frame_bottom") )..{
         InitCommand=cmd(valign,0);
       };
@@ -243,7 +251,11 @@ function LoadPlayerStuff(Player)
 		LoadActor( THEME:GetPathG("","ScreenSelectProfile/"..ddrgame.."sceawi_press_button") ) .. {
 			InitCommand=cmd(zoomy,0;diffuseshift;effectcolor1,Color('White');effectcolor2,color("#A5A6A5"));
 			OnCommand=cmd(x,0;y,-20;sleep,0.5;linear,0.1;zoomx,1;zoomy,1);
-			--OffCommand=cmd(linear,0.1;zoomy,0;diffusealpha,0);
+			OffCommand=function(s) 
+				if GetUserPref("OptionRowScreenCharacters")=='OFF' then	
+					s:linear(0.1):zoomy(0):diffusealpha(0)
+				end;
+			end,
 		};
 
 	};

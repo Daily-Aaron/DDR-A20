@@ -390,7 +390,7 @@ local t = Def.ActorFrame{
 		end;
 	};
 	
-	SOUND:PlayOnce(THEME:GetPathS("ScreenSelectMusic","SelectLevel "..RSL));
+	SOUND:PlayOnce(THEME:GetPathS("","Announcer/ScreenSelectLevel "..RSL));
 }
 
 

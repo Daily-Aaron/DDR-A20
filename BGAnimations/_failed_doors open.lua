@@ -20,7 +20,7 @@ t[#t+1] = Def.ActorFrame{
 	};
 }
 
---Those Weird Curved Things
+
 t[#t+1] = Def.ActorFrame{
 	InitCommand=cmd(CenterX);
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_red"))..{

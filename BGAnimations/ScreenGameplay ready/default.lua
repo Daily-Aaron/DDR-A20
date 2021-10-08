@@ -1,5 +1,22 @@
 local t = Def.ActorFrame{};
 local song = GAMESTATE:GetCurrentSong():GetDisplayFullTitle();
+local ss = 	song == "NEPHILIM DELTA" or 
+			song == "SILVER☆DREAM" or
+			song == "恋する☆宇宙戦争っ!!" or
+			song == "Over The “Period”" or 
+			song == "最小三倍完全数" or
+			song == "PANIC HOLIC" or
+			song == "Valkyrie dimension" or
+			song == "Second Heaven" or
+			song == "MAX 360" or
+			song == "SABER WING" or
+			song == "Triple Journey -TAG EDITION-" or
+			song == "Tohoku EVOLVED" or 
+			song == "TRIP MACHINE EVOLUTION" or 
+			song == "Pluto Relinquish" or 
+			song == "MAX.(period)" or
+			song == "DEAD END" or 
+			song == "DEAD END (GROOVE RADAR Special)";
 
 return Def.ActorFrame {
 	LoadActor( "scene_choice_stage_bg_ready_shadow" )..{
@@ -12,22 +29,7 @@ return Def.ActorFrame {
 		OnCommand=function(self)
 			self:diffusealpha(0):zoom(0):linear(0.1):diffusealpha(1):zoom(1.25):linear(0.1):diffusealpha(1):zoom(1)
 --THEN SLEEP HAS TO BE 0.4 MORE THAN THE NORMAL SLEEP
-			if 	song == "NEPHILIM DELTA" or 
-				song == "SILVER☆DREAM" or
-				song == "恋する☆宇宙戦争っ!!" or
-				song == "Over The “Period”" or 
-				song == "最小三倍完全数" or
-				song == "PANIC HOLIC" or
-				song == "MAX 360" or
-				song == "SABER WING" or
-				song == "Triple Journey -TAG EDITION-" or
-				song == "Tohoku EVOLVED" or 
-				song == "TRIP MACHINE EVOLUTION" or 
-				song == "Pluto Relinquish" or 
-				song == "MAX.(period)" or
-				song == "DEAD END" or 
-				song == "DEAD END (GROOVE RADAR Special)" 
-			then
+			if ss then
 				self:sleep(0.4)
 			else
 				self:sleep(1.1)
@@ -41,22 +43,7 @@ return Def.ActorFrame {
 		OnCommand=function(self)
 			self:diffusealpha(1):zoom(0):linear(0.1):zoom(0.618):x(SCREEN_CENTER_X-0):linear(0.1):diffusealpha(1):zoomx(1.42):zoomy(1.6):linear(0.1):diffusealpha(1):zoomx(1.39):zoomy(1.25):sleep(0.1):linear(0.2):zoom(1.209)
 --NORMAL SLEEP				
-				if 	song == "NEPHILIM DELTA" or 
-					song == "SILVER☆DREAM" or
-					song == "恋する☆宇宙戦争っ!!" or
-					song == "Over The “Period”" or 
-					song == "最小三倍完全数" or
-					song == "PANIC HOLIC" or
-					song == "MAX 360" or
-					song == "SABER WING" or
-					song == "Triple Journey -TAG EDITION-" or
-					song == "Tohoku EVOLVED" or 
-					song == "TRIP MACHINE EVOLUTION" or 
-					song == "Pluto Relinquish" or 
-					song == "MAX.(period)" or
-					song == "DEAD END" or 
-					song == "DEAD END (GROOVE RADAR Special)"  
-				then
+				if ss then
 					self:sleep(0)
 				else
 					self:sleep(0.7)

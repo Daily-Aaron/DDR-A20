@@ -1,15 +1,16 @@
 local t = Def.ActorFrame{};
-
-
 -- Full combo
 for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
-	t[#t+1] = LoadActor("FullCombo", pn) .. {
-	};
+	t[#t+1] = LoadActor("FullCombo", pn);
 end;
 
-t[#t+1] = LoadActor("OniGameOverDisplay");
+	t[#t+1] = LoadActor("GameOver");
 
-t[#t+1] = LoadActor("../../Other/_/alphaMembers")..{};
+if GAMESTATE:GetCurrentSong():GetDisplayFullTitle() == "LET'S CHECK YOUR LEVEL!" then
+	t[#t+1] = LoadActor("LET'S CHECK YOUR LEVEL!");
+elseif GAMESTATE:GetCurrentSong():GetDisplayFullTitle() == "Lesson by DJ" then
+	t[#t+1] = LoadActor("Lesson by DJ");
+end;
 
 
 return t;

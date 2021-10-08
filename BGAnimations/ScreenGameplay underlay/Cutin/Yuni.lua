@@ -1,7 +1,5 @@
 local pn = ({...})[1] --only argument to file
 local short_pn = ToEnumShortString(pn)
-local env = GAMESTATE:Env()
-local charName = GAMESTATE:GetCharacter(pn):GetDisplayName()
 local style = GAMESTATE:GetCurrentStyle():GetStyleType();
 
 local maskfile =
@@ -17,15 +15,14 @@ local versus_y = {
 }
 versus_y = versus_y[short_pn]
 
-local dir = "/Characters/(X2) Yuni/Cut-In/"
 local t = Def.ActorFrame{};
---if (charName ~= "") then
-  local charComboA = (dir.."comboA.png")
-  local charComboB = (dir.."comboB.png")
-  local charCombo100 = (dir.."combo100.png")
-  local charCircles = (dir.."Tex_0035.png")
-  local charColor = (dir.."Tex_0036.png")
-  local charLight = (dir.."Tex_0037.png")
+
+local charComboA   = "/Characters/(X2) Yuni/Cut-In/comboA.png";
+local charComboB   = "/Characters/(X2) Yuni/Cut-In/comboB.png";
+local charCombo100 = "/Characters/(X2) Yuni/Cut-In/combo100.png";
+local charCircles  = "/Characters/(X2) Yuni/Cut-In/Tex_0035.png";
+local charColor    = "/Characters/(X2) Yuni/Cut-In/Tex_0036.png";
+local charLight    = "/Characters/(X2) Yuni/Cut-In/Tex_0037.png";
 
 t[#t+1] = Def.ActorFrame{
   ComboChangedMessageCommand=function(self, params)

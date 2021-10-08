@@ -73,11 +73,8 @@ t[#t+1] = LoadActor(THEME:GetPathB("","_blue doors/origwhiteflash"))..{
 	OnCommand=cmd(sleep,dt;FullScreen;zoom,2;diffusealpha,0;diffusealpha,0;linear,0.1;sleep,0.9;diffusealpha,1;linear,0.2;diffusealpha,0;);
 		};
 
-						
 
 
-
---Those Weird Curved Things
 t[#t+1] = Def.ActorFrame{
 	InitCommand=cmd(CenterX);
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_blue"))..{

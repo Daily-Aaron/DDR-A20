@@ -75,17 +75,22 @@ for _,pn in pairs(GAMESTATE:GetEnabledPlayers()) do
 			Def.BitmapText{
             Font="_dispatrox 32px",
             InitCommand=function(s)
-                s:settext(string.upper(PROFILEMAN:GetPlayerName(pn))):diffuse(color("#feec0a"))
-					if ddrgame=="gold_" then
-						s:y(2)
-					else
-						if GAMESTATE:PlayerIsUsingModifier(pn,'reverse') then
+				if GetUserPref("OptionRowBPM")=='BPM' then
+					s:settext("BPM"):diffuse(color("#feec0a"))
+					s:x(pn==PLAYER_1 and 30 or 30):zoom(0.72):maxwidth(180)
+				else
+					s:settext(string.upper(PROFILEMAN:GetPlayerName(pn))):diffuse(color("#feec0a"))
+					s:x(pn==PLAYER_1 and 76 or 76):zoom(0.72):maxwidth(180)
+				end;
+				if ddrgame=="gold_" then
+					s:y(2)
+				else
+					if GAMESTATE:PlayerIsUsingModifier(pn,'reverse') then
 						s:y(1)
-						else
+					else
 						s:y(4)
-						end
-					end;
-                s:x(pn==PLAYER_1 and 76 or 76):zoom(0.72):maxwidth(180)
+					end
+				end;
             end,
             };
 			--Difficulty Graphic

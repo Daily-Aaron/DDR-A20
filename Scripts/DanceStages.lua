@@ -72,3 +72,37 @@ end
 
 function setenv(name,value) GAMESTATE:Env()[name] = value end
 function getenv(name) return GAMESTATE:Env()[name] end
+
+function Boom()
+	if GetUserPref("OptionRowBoom")=='2014' then
+		return "(2014)" 
+	else
+		return "(A)"
+	end;
+end;
+
+function Screen.CharacterSelect()
+	if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+		return "ScreenSelectStyle"
+	else
+		return "ScreenSelectCharacters"
+	end
+end
+
+Line = {
+	OptionNumber = function() 
+		if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+			return "1,2,3,4,5,6,7,8,9,10,11,12,13"
+		else
+			return "1,2,3,4,5,6,7,8,9,10,11,12"
+		end
+	end;
+	
+	LineP = function()
+		if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+			return "list,Characters"
+		else
+			return "list,Risky"
+		end;
+	end;
+}

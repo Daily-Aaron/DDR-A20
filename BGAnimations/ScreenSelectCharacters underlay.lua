@@ -1,7 +1,7 @@
 local RSC = math.random(1,3);
 local t = Def.ActorFrame{
 	LoadActor(THEME:GetPathB("","ModDate"));
-	LoadActor(THEME:GetPathS("ScreenSelectCharacters","Voice "..RSC))..{
+	LoadActor(THEME:GetPathS("","Announcer/ScreenSelectCharacters "..RSC))..{
 		OnCommand=cmd(queuecommand,"Play");
 		PlayCommand=cmd(play);
 	};

@@ -5,30 +5,16 @@ local t = Def.ActorFrame{
 }
 
 
-if ThemePrefs.Get("Version") == "A20" then
-	if GAMESTATE:HasEarnedExtraStage() then
-		t[#t+1] = LoadActor( THEME:GetPathS("","_silent") ) .. {
-			PlayCommand=cmd(play);
-			OnCommand=cmd(queuecommand,"Play");
-		};
-	else
-		t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/A20 Results") ) .. {
-			OnCommand=cmd(sleep,2.4;queuecommand,"Play");
-			PlayCommand=cmd(play);
-		};
-	end;
+if GAMESTATE:HasEarnedExtraStage() then
+	t[#t+1] = LoadActor( THEME:GetPathS("","_silent") ) .. {
+		PlayCommand=cmd(play);
+		OnCommand=cmd(queuecommand,"Play");
+	};
 else
-	if GAMESTATE:HasEarnedExtraStage() then
-		t[#t+1] = LoadActor( THEME:GetPathS("","_silent") ) .. {
-			PlayCommand=cmd(play);
-			OnCommand=cmd(queuecommand,"Play");
-		};
-	else
-		t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/A20+ Results") ) .. {
-			PlayCommand=cmd(play);
-			OnCommand=cmd(sleep,2.4;queuecommand,"Play");
-		};
-	end;
+	t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/"..version.."Results")) .. {
+		PlayCommand=cmd(play);
+		OnCommand=cmd(sleep,2.4;queuecommand,"Play");
+	};
 end;
 
 

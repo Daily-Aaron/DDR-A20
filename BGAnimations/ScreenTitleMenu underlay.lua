@@ -1,19 +1,30 @@
 local t = Def.ActorFrame {
   LoadActor(THEME:GetPathB("ScreenLogo","decorations/"..ddrgame.."back"))..{
-    InitCommand=cmd(CenterX;y,_screen.cy-54;zoom,1);
+    InitCommand=function(s) s:x(_screen.cx)
+	if version == "A20_" then
+		s:y(_screen.cy-54)
+	else
+		s:y(_screen.cy-30) 
+	end;
+	end,
   };
-  LoadActor(THEME:GetPathB("ScreenLogo","decorations/copyright2020"))..{
+  LoadActor(THEME:GetPathB("ScreenLogo","decorations/"..version.."copyright"))..{
     InitCommand=cmd(CenterX;y,SCREEN_BOTTOM-148;zoom,0.8);
   };
    LoadActor(THEME:GetPathB("","ModDate.lua"));
 
 };
 
-t[#t+1] = Def.ActorFrame {
-	LoadActor(THEME:GetPathB("ScreenLogo","decorations/"..version..ddrgame.."logo"))..{
-		InitCommand=cmd(CenterX;y,_screen.cy-54;zoom,1);
-		};
-	};
+t[#t+1] = LoadActor(THEME:GetPathB("ScreenLogo","decorations/"..version..ddrgame.."logo"))..{
+	InitCommand=cmd(CenterX;y,_screen.cy-54;zoom,1);
+};
+
+if version == "A20+_" then
+t[#t+1] = LoadActor(THEME:GetPathB("ScreenLogo","decorations/"..ddrgame.."logo_eff"))..{
+	InitCommand=cmd(x,_screen.cx;y,_screen.cy-54;diffuse,color("1,1,1,0.5");blend,Blend.Add);
+	OnCommand=cmd(diffusealpha,0;sleep,0.6;linear,0.1;diffusealpha,0.5;linear,0.1;diffusealpha,0);
+};
+end
 	
 --Cellphone
 	t[#t+1] = Def.ActorFrame {

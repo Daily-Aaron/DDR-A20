@@ -1,7 +1,6 @@
 local t = Def.ActorFrame{};
-
-local show_cutins = FILEMAN:DoesFileExist(GAMESTATE:GetCurrentSong():GetMusicPath():sub(1, -4).."avi") == false and FILEMAN:DoesFileExist(GAMESTATE:GetCurrentSong():GetMusicPath():sub(1, -4).."mp4") == false
---not song:HasBGChanges()
+local pn = ({...})[1] --only argument to file
+local Video = FILEMAN:DoesFileExist(GAMESTATE:GetCurrentSong():GetMusicPath():sub(1, -4).."avi") == false and FILEMAN:DoesFileExist(GAMESTATE:GetCurrentSong():GetMusicPath():sub(1, -4).."mp4") == false
 local style = GAMESTATE:GetCurrentStyle():GetStyleType()
 local st = GAMESTATE:GetCurrentStyle():GetStepsType();
 local x_table = {
@@ -11,17 +10,12 @@ local x_table = {
 
 
 --toasty loader
-if GetUserPref("OptionRowCutin")=='true' then
-	if show_cutins then
+if GetUserPref("OptionRowCutin")=='ON' then
+	if Video then
 	--use ipairs here because i think it expects P1 is loaded before P2
 		for _, pn in ipairs(GAMESTATE:GetEnabledPlayers()) do
-			if string.find(GAMESTATE:GetCharacter(pn):GetDisplayName(), "(2ndMode)") or
-			   string.find(GAMESTATE:GetCharacter(pn):GetDisplayName(), "(Ace)") or
-			   string.find(GAMESTATE:GetCharacter(pn):GetDisplayName(), "(SN)") or
-			   string.find(GAMESTATE:GetCharacter(pn):GetDisplayName(), "Rinon ") or
-			   string.find(GAMESTATE:GetCharacter(pn):GetDisplayName(), "(Old)") or
-			   string.find(GAMESTATE:GetCharacter(pn):GetDisplayName(), " 2") then
-			elseif GAMESTATE:GetCurrentSong():GetDisplayFullTitle() == "Yuni's Nocturnal Days" then
+			if FILEMAN:DoesFileExist("/Characters/"..GAMESTATE:GetCharacter(pn):GetDisplayName().."/Cut-In") then
+			   if GAMESTATE:GetCurrentSong():GetDisplayFullTitle() == "Yuni's Nocturnal Days" then
 				t[#t+1] = Def.ActorFrame{
 					LoadActor("Cutin/Yuni.lua", pn)..{
 						OnCommand=cmd(setsize,200,SCREEN_HEIGHT);
@@ -67,6 +61,7 @@ if GetUserPref("OptionRowCutin")=='true' then
 						end;
 					};
 				};
+			end;
 			end;
 		end;
 	end;

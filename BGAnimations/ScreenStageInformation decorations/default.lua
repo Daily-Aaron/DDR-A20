@@ -42,7 +42,7 @@ t[#t+1] = Def.ActorFrame {
 	};
 };
 
-t[#t+1] = LoadActor("SoundStage");
+
 t[#t+1] = LoadActor("doors.lua");
 	
 t[#t+1] = Def.ActorFrame {

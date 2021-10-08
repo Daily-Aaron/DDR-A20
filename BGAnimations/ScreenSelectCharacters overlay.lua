@@ -121,13 +121,18 @@ local function TestActorScroller()
 				elseif string.find( value:GetDisplayName(), "Rinon") then
 					self:zoom(8.7)
 				elseif string.find( value:GetDisplayName(), "Rena") then
-					self:zoom(10.7)
+					self:zoom(12)
 				elseif string.find( value:GetDisplayName(), "PiX") then
 					self:zoom(5)
-				elseif string.match(value:GetDisplayName(), "(X)") or string.match(value:GetDisplayName(), "(X2)") or string.match(value:GetDisplayName(), "(Ace)") or string.match(value:GetDisplayName(), "(2ndMode)") then
+				elseif string.find( value:GetDisplayName(), "[HP]") then
+					self:zoom(12)
+				elseif string.match(value:GetDisplayName(), "(X)") or 
+					   string.match(value:GetDisplayName(), "(X2)") or 
+					   string.match(value:GetDisplayName(), "(Ace)") or 
+					   string.match(value:GetDisplayName(), "(2nd)") then
 					self:zoom(13) 
 				else 
-					self:zoom(10) 
+					self:zoom(13) 
 				end;
 				end,
 			OffCommand=function(s) s:linear(0.2):diffusealpha(0) end,
@@ -172,7 +177,7 @@ for player in ivalues(PlayerNumber) do
 		end;
 		TransformFunction=function(self, offset, itemIndex, numItems)
 			local curve = math.pi;
-			local WHEEL_3D_RADIUS = 1400;
+			local WHEEL_3D_RADIUS = 0;
 			local rotationx_radians = scale(offset,-numItems/2,numItems/2,-curve/2,curve/2);
 
 			-- Need to check this value, as the wheel gets completely broken if there's less

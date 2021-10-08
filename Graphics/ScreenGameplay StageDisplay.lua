@@ -22,7 +22,9 @@ local t = Def.ActorFrame {
 				local songsPlayed = mpStats:GetSongsPassed() + 1
 				self:settextf("%i / %i", songsPlayed, GAMESTATE:GetCurrentCourse():GetEstimatedNumStages());
 			else
-				if GAMESTATE:IsEventMode() then
+				if GAMESTATE:GetCurrentSong():GetDisplayFullTitle() == "LET'S CHECK YOUR LEVEL!" then
+					self:settextf("CHECKING")
+				elseif GAMESTATE:IsEventMode() then
 					self:settextf("EVENT", curStageIndex);
 				else
 					local thed_stage= thified_curstage_index(false)

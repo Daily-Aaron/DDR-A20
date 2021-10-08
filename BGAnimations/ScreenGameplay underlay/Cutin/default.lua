@@ -1,7 +1,5 @@
 local pn = ({...})[1] --only argument to file
 local short_pn = ToEnumShortString(pn)
-local env = GAMESTATE:Env()
-local charName = GAMESTATE:GetCharacter(pn):GetDisplayName()
 local style = GAMESTATE:GetCurrentStyle():GetStyleType();
 
 local maskfile =
@@ -18,14 +16,13 @@ local versus_y = {
 versus_y = versus_y[short_pn]
 
 local t = Def.ActorFrame{};
---if (charName ~= "") then
-  local charComboA = Characters.GetAssetPath(charName, "comboA.png")
-  local charComboB = Characters.GetAssetPath(charName, "comboB.png")
-  local charCombo100 = Characters.GetAssetPath(charName, "combo100.png")
-  local charCircles = Characters.GetAssetPath(charName, "Tex_0035.png")
-  local charColor = Characters.GetAssetPath(charName, "Tex_0036.png")
-  local charLight = Characters.GetAssetPath(charName, "Tex_0037.png")
-  local charVer = (Characters.GetConfig(charName)).version
+
+local charComboA   = "/Characters/"..GAMESTATE:GetCharacter(pn):GetDisplayName().."/Cut-In/comboA.png";
+local charComboB   = "/Characters/"..GAMESTATE:GetCharacter(pn):GetDisplayName().."/Cut-In/comboB.png";
+local charCombo100 = "/Characters/"..GAMESTATE:GetCharacter(pn):GetDisplayName().."/Cut-In/combo100.png";
+local charCircles  = "/Characters/"..GAMESTATE:GetCharacter(pn):GetDisplayName().."/Cut-In/Tex_0035.png";
+local charColor    = "/Characters/"..GAMESTATE:GetCharacter(pn):GetDisplayName().."/Cut-In/Tex_0036.png";
+local charLight    = "/Characters/"..GAMESTATE:GetCharacter(pn):GetDisplayName().."/Cut-In/Tex_0037.png";
 
 t[#t+1] = Def.ActorFrame{
   ComboChangedMessageCommand=function(self, params)
@@ -106,11 +103,7 @@ Def.Sprite {
   InitCommand=function(self)
     self:MaskDest();
     self:diffusealpha(0);
-    if charVer <= 2 then
-      self:scaletoclipped(300,650)
-    else
-      self:scaletoclipped(300,720)
-    end;
+    self:scaletoclipped(300,720)
     if style == "StyleType_TwoPlayersTwoSides" or GAMESTATE:GetPlayMode() == 'PlayMode_Rave' then
       self:y(versus_y)
     end
@@ -130,20 +123,13 @@ Def.Sprite {
   		error("Cutin: unknown Popup type "..tostring(type))
   	end
     self:finishtweening();
-    if charVer ~= 3 then
-    	self:y(48);
-	else
-  		self:addy(13);
-  	end
+ --   self:y(48);
+	self:addy(13);
   	self:sleep(0.1);
   	self:linear(0.1);
   	self:diffusealpha(1);
   	self:linear(1);
-  	if charVer ~=3 then
-  		self:addy(-13)
-  	else
-  		self:addy(-13);
-  	end
+  	self:addy(-13)
   	self:linear(0.1);
   	self:diffusealpha(0);
 end;

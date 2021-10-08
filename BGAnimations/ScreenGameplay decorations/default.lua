@@ -138,4 +138,12 @@ end
 
 t[#t+1] = StandardDecorationFromFile("ScoreFrame","ScoreFrame");
 
+if GetUserPref("OptionRowBPM")=='BPM' then
+	for _,pn in pairs(GAMESTATE:GetEnabledPlayers()) do
+		t[#t+1] = StandardDecorationFromFileOptional("BPMDisplay","BPMDisplay")..{
+			InitCommand=function(s) s:x(pn==PLAYER_1 and SCREEN_LEFT+302 or SCREEN_RIGHT-81) end,
+		};
+	end;
+end;
+
 return t

@@ -16,17 +16,10 @@ local DifficultyToFrame = {
 local t = Def.ActorFrame {};  
 
 
-if ThemePrefs.Get("Version") == "A20" then
-		t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/A20 Results") ) .. {
-			OnCommand=cmd(queuecommand,"Play");
-			PlayCommand=cmd(play);
-		};
-else
-		t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/A20+ Results") ) .. {
-			PlayCommand=cmd(play);
-			OnCommand=cmd(queuecommand,"Play");
-		};
-end;
+t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/"..version.."Results")) .. {
+	PlayCommand=cmd(play);
+	OnCommand=cmd(sleep,2.4;queuecommand,"Play");
+};
 
 -- Grade back
 t[#t+1] = Def.ActorFrame {

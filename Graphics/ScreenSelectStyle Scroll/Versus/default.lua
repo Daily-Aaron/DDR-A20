@@ -20,7 +20,7 @@ local Image = Def.ActorFrame{
 		GainFocusCommand=cmd(queuecommand,"Play");
 		PlayCommand=function(self)
 			if self:GetVisible() then
-			SOUND:PlayOnce(THEME:GetPathS("ScreenSelectStyle","Versus"));
+			SOUND:PlayOnce(THEME:GetPathS("","Announcer/ScreenSelectStyle Versus"));
 			end;
 		end;
 	};

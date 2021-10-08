@@ -53,8 +53,8 @@ t[#t+1] = Def.ActorFrame {
 			OnCommand=cmd(x,SCREEN_CENTER_X+2;y,SCREEN_BOTTOM-78;zoomx,1;zoomy,0.97);
 		};
 	};
---messages
---hope this works
+
+
 if GAMESTATE:GetCoinMode() == "CoinMode_Free" then --if 1
 	t[#t+1] = Def.ActorFrame {
 		LoadActor(ddrgame..lang.."_deti_bt_decision_off" )..{

@@ -16,6 +16,8 @@ return Def.ActorFrame {
 				song:GetDisplayFullTitle() == "最小三倍完全数" or
 				song:GetDisplayFullTitle() == "PANIC HOLIC" or
 				song:GetDisplayFullTitle() == "MAX 360" or
+				song:GetDisplayFullTitle() == "Second Heaven" or
+				song:GetDisplayFullTitle() == "Valkyrie dimension" or
 				song:GetDisplayFullTitle() == "MAX.(period)" or
 				song:GetDisplayFullTitle() == "SABER WING" or
 				song:GetDisplayFullTitle() == "Triple Journey -TAG EDITION-" 

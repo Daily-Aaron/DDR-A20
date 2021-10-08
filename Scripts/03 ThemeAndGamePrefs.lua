@@ -32,15 +32,6 @@ function ScreenGameplay_P2X()
 	end
 end
 
-function RollingNumbersJudgment_TextFormat()
-	if GAMESTATE:IsCourseMode() or (Var "LoadingScreen") == "ScreenEvaluationSummary2" or (Var "LoadingScreen") == "ScreenEvaluationSummary2Rave" then
-		return "%05.0f";
-	else
-		return "%04.0f";
-	end;
-end
-
-
 function OptionRowComboJudgmentUnderField()
 	local t = {
 		Name = "OptionRowComboJudgmentUnderField";
@@ -48,7 +39,7 @@ function OptionRowComboJudgmentUnderField()
 		SelectType = "SelectOne";
 		OneChoiceForAllPlayers = true;
 		ExportOnChange = false;
-		Choices = {THEME:GetString("OptionNames","Background"),THEME:GetString("OptionNames","Foreground")};
+		Choices = {"Background", "Foreground", };
 		LoadSelections = function(self, list, pn)
 			if ReadPrefFromFile("OptionRowComboUnderField") ~= nil and ReadPrefFromFile("OptionRowJudgmentUnderField") ~= nil then
 				if GetUserPref("OptionRowComboUnderField")=='true' and GetUserPref("OptionRowJudgmentUnderField")=='true' then
@@ -89,7 +80,7 @@ function OptionRowBeatBars()
 		SelectType = "SelectOne";
 		OneChoiceForAllPlayers = true;
 		ExportOnChange = false;
-		Choices = {THEME:GetString("OptionNames","BeatBarsOff"),THEME:GetString("OptionNames","BeatBarsOn")};
+		Choices = {"OFF", "ON", };
 		LoadSelections = function(self, list, pn)
 			if ReadPrefFromFile("OptionRowBeatBars") ~= nil then
 				if GetUserPref("OptionRowBeatBars")=='false' then
@@ -126,7 +117,7 @@ function OptionRowShockArrows()
 		SelectType = "SelectOne";
 		OneChoiceForAllPlayers = true;
 		ExportOnChange = false;
-		Choices = {THEME:GetString("OptionNames","ShockArrowsOff"),THEME:GetString("OptionNames","ShockArrowsOn")};
+		Choices = {"OFF", "ON", };
 		LoadSelections = function(self, list, pn)
 			if ReadPrefFromFile("OptionRowShockArrows") ~= nil then
 				if GetUserPref("OptionRowShockArrows")=='false' then
@@ -207,28 +198,28 @@ function OptionRowCutin()
 		SelectType = "SelectOne";
 		OneChoiceForAllPlayers = true;
 		ExportOnChange = false;
-		Choices = {THEME:GetString("OptionNames","CutinOff"),THEME:GetString("OptionNames","CutinOn")};
+		Choices = {"OFF", "ON", };
 		LoadSelections = function(self, list, pn)
 			if ReadPrefFromFile("OptionRowCutin") ~= nil then
-				if GetUserPref("OptionRowCutin")=='false' then
+				if GetUserPref("OptionRowCutin")=='OFF' then
 					list[1] = true
-				elseif GetUserPref("OptionRowCutin")=='true' then
+				elseif GetUserPref("OptionRowCutin")=='ON' then
 					list[2] = true
 				else
 					list[1] = true
 				end
 			else
-				WritePrefToFile("OptionRowCutin",false);
+				WritePrefToFile("OptionRowCutin",'OFF');
 				list[1] = true;
 			end;
 		end;
 		SaveSelections = function(self, list, pn)
 			if list[1] then
-				WritePrefToFile("OptionRowCutin",false);
+				WritePrefToFile("OptionRowCutin",'OFF');
 			elseif list[2] then
-				WritePrefToFile("OptionRowCutin",true);
+				WritePrefToFile("OptionRowCutin",'ON');
 			else
-				WritePrefToFile("OptionRowCutin",false);
+				WritePrefToFile("OptionRowCutin",'OFF');
 			end;
 			THEME:ReloadMetrics();
 		end;
@@ -244,28 +235,139 @@ function OptionRowBoom()
 		SelectType = "SelectOne";
 		OneChoiceForAllPlayers = true;
 		ExportOnChange = false;
-		Choices = {THEME:GetString("OptionNames","BOOM1"),THEME:GetString("OptionNames","BOOM2")};
+		Choices = {"A", "2014", };
 		LoadSelections = function(self, list, pn)
 			if ReadPrefFromFile("OptionRowBoom") ~= nil then
-				if GetUserPref("OptionRowBoom")=='false' then
+				if GetUserPref("OptionRowBoom")=='A' then
 					list[1] = true
-				elseif GetUserPref("OptionRowBoom")=='true' then
+				elseif GetUserPref("OptionRowBoom")=='2014' then
 					list[2] = true
 				else
 					list[1] = true
 				end
 			else
-				WritePrefToFile("OptionRowBoom",false);
+				WritePrefToFile("OptionRowBoom",'A');
 				list[1] = true;
 			end;
 		end;
 		SaveSelections = function(self, list, pn)
 			if list[1] then
-				WritePrefToFile("OptionRowBoom",false);
+				WritePrefToFile("OptionRowBoom",'A');
 			elseif list[2] then
-				WritePrefToFile("OptionRowBoom",true);
+				WritePrefToFile("OptionRowBoom",'2014');
 			else
-				WritePrefToFile("OptionRowBoom",false);
+				WritePrefToFile("OptionRowBoom",'A');
+			end;
+			THEME:ReloadMetrics();
+		end;
+	};
+	setmetatable( t, t );
+	return t;
+end
+
+function OptionRowBPM()
+	local t = {
+		Name = "BPM";
+		LayoutType = "ShowAllInRow";
+		SelectType = "SelectOne";
+		OneChoiceForAllPlayers = true;
+		ExportOnChange = false;
+		Choices = {"NAME", "BPM", };
+		LoadSelections = function(self, list, pn)
+			if ReadPrefFromFile("OptionRowBPM") ~= nil then
+				if GetUserPref("OptionRowBPM")=='NAME' then
+					list[1] = true
+				elseif GetUserPref("OptionRowBPM")=='BPM' then
+					list[2] = true
+				else
+					list[1] = true
+				end
+			else
+				WritePrefToFile("OptionRowBPM",'NAME');
+				list[1] = true;
+			end;
+		end;
+		SaveSelections = function(self, list, pn)
+			if list[1] then
+				WritePrefToFile("OptionRowBPM",'NAME');
+			elseif list[2] then
+				WritePrefToFile("OptionRowBPM",'BPM');
+			else
+				WritePrefToFile("OptionRowBPM",'NAME');
+			end;
+			THEME:ReloadMetrics();
+		end;
+	};
+	setmetatable( t, t );
+	return t;
+end
+
+function OptionRowScreenCharacters()
+	local t = {
+		Name = "ScreenCharacters";
+		LayoutType = "ShowAllInRow";
+		SelectType = "SelectOne";
+		OneChoiceForAllPlayers = true;
+		ExportOnChange = false;
+		Choices = {"OFF", "ON", };
+		LoadSelections = function(self, list, pn)
+			if ReadPrefFromFile("OptionRowScreenCharacters") ~= nil then
+				if GetUserPref("OptionRowScreenCharacters")=='OFF' then
+					list[1] = true
+				elseif GetUserPref("OptionRowScreenCharacters")=='ON' then
+					list[2] = true
+				else
+					list[1] = true
+				end
+			else
+				WritePrefToFile("OptionRowScreenCharacters",'OFF');
+				list[1] = true;
+			end;
+		end;
+		SaveSelections = function(self, list, pn)
+			if list[1] then
+				WritePrefToFile("OptionRowScreenCharacters",'OFF');
+			elseif list[2] then
+				WritePrefToFile("OptionRowScreenCharacters",'ON');
+			else
+				WritePrefToFile("OptionRowScreenCharacters",'OFF');
+			end;
+			THEME:ReloadMetrics();
+		end;
+	};
+	setmetatable( t, t );
+	return t;
+end
+
+function OptionRowSpeedDisplay()
+	local t = {
+		Name = "SpeedDisplay";
+		LayoutType = "ShowAllInRow";
+		SelectType = "SelectOne";
+		OneChoiceForAllPlayers = true;
+		ExportOnChange = false;
+		Choices = {"OFF" ,"ON" };
+		LoadSelections = function(self, list, pn)
+			if ReadPrefFromFile("OptionRowSpeedDisplay") ~= nil then
+				if GetUserPref("OptionRowSpeedDisplay")=='OFF' then
+					list[1] = true
+				elseif GetUserPref("OptionRowSpeedDisplay")=='ON' then
+					list[2] = true
+				else
+					list[1] = true
+				end
+			else
+				WritePrefToFile("OptionRowSpeedDisplay",'OFF');
+				list[1] = true;
+			end;
+		end;
+		SaveSelections = function(self, list, pn)
+			if list[1] then
+				WritePrefToFile("OptionRowSpeedDisplay",'OFF');
+			elseif list[2] then
+				WritePrefToFile("OptionRowSpeedDisplay",'ON');
+			else
+				WritePrefToFile("OptionRowSpeedDisplay",'OFF');
 			end;
 			THEME:ReloadMetrics();
 		end;

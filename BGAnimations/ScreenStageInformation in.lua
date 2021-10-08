@@ -30,5 +30,50 @@ t[#t+1] = Def.ActorFrame {
 	};
 };
 
+SOUND:PlayOnce(THEME:GetPathS("","Announcer/"..version.."Crowd X"));
+
+if GAMESTATE:GetCurrentStage() == 'Stage_1st' then
+	t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/1st Stage")).. {		
+		OnCommand=cmd(queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
+
+elseif GAMESTATE:GetCurrentStage() == 'Stage_2nd' then
+t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/2nd Stage")) .. {		
+		OnCommand=cmd(queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
+
+elseif GAMESTATE:GetCurrentStage() == 'Stage_3rd' then
+t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/3rd Stage")) .. {		
+		OnCommand=cmd(queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
+
+elseif GAMESTATE:GetCurrentStage() == 'Stage_4th' then
+t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/4th Stage")) .. {		
+		OnCommand=cmd(queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
+
+elseif GAMESTATE:GetCurrentStage() == 'Stage_Final' then
+t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/Final Stage")) .. {		
+		OnCommand=cmd(queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
+
+elseif GAMESTATE:IsExtraStage() then
+t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/Extra Stage")) .. {		
+		OnCommand=cmd(queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
+
+elseif GAMESTATE:IsExtraStage2() then
+t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/Encore Extra Stage")) .. {		
+		OnCommand=cmd(queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
+
+end;
 
 return t;
