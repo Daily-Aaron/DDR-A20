@@ -1,34 +1,31 @@
 local t = LoadFallbackB();
 
+t[#t+1] = Def.ActorFrame {
+	LoadActor(THEME:GetPathS("","Profile In"))..{
+		OnCommand=cmd(play);
+	};
+	
+	LoadActor(THEME:GetPathS("","Profile Load"))..{
+		OnCommand=cmd(sleep,0.35;queuecommand,"Play");
+		PlayCommand=cmd(play);
+	};
 
-if ThemePrefs.Get("Version") == "A20" then
-		t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/logout/A20 Logout") ) .. {
-			OnCommand=cmd(queuecommand,"Play");
-			PlayCommand=cmd(play);
-		};
+	LoadActor( THEME:GetPathS("","Profile Start") )..{
+		OffCommand=cmd(play);
+	};
+};
+
+if GetUserPref("OptionRowModel")=='GOLD' then
+	if GetUserPref("OptionRowGoldenLeague")=='BRONZE' or 
+	   GetUserPref("OptionRowGoldenLeague")=='SILVER' or 
+	   GetUserPref("OptionRowGoldenLeague")=='GOLD' 
+	then
+		t[#t+1] = LoadActor("doors_gl_bluebg");
+	else
+		t[#t+1] = LoadActor("_bluebg");
+	end;
 else
-		t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/logout/A20+ Logout") ) .. {
-			PlayCommand=cmd(play);
-			OnCommand=cmd(queuecommand,"Play");
-		};
+	t[#t+1] = LoadActor("_bluebg");
 end;
 
-t[#t+1] = Def.ActorFrame {
-  LoadActor(THEME:GetPathS("","Profile_start"))..{
-		OnCommand=cmd(play);
-	};
-};
-
-t[#t+1] = Def.ActorFrame {
-  LoadActor(THEME:GetPathS("","Profile_In"))..{
-		OnCommand=cmd(play);
-	};
-};
-
-t[#t+1] = LoadActor( THEME:GetPathS("","Profile_start") )..{
-			OffCommand=cmd(play);
-};
-
-t[#t+1] = LoadActor("_bluebg");
-  
 return t

@@ -16,11 +16,6 @@ local DifficultyToFrame = {
 local t = Def.ActorFrame {};  
 
 
-t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/"..version.."Results")) .. {
-	PlayCommand=cmd(play);
-	OnCommand=cmd(sleep,2.4;queuecommand,"Play");
-};
-
 -- Grade back
 t[#t+1] = Def.ActorFrame {
 	InitCommand=function(self)

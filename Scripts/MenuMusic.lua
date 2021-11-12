@@ -27,7 +27,7 @@ do
 	function GetMenuMusicPath(type, relative)
 		local possibles = music[type]
 			or error("GetMenuMusicPath: unknown menu music type "..type, 2)
-		local selection = ThemePrefs.Get("Version")
+		local selection = GetUserPref("OptionRowVersion")
 		local file = possibles[selection]
 			or error("GetMenuMusicPath: no menu music defined for selection"..selection, 2)
 		return relative and file or THEME:GetPathS("", file)

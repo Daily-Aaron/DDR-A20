@@ -30,7 +30,7 @@ t[#t+1] = Def.ActorFrame {
 	};
 };
 
-SOUND:PlayOnce(THEME:GetPathS("","Announcer/"..version.."Crowd X"));
+SOUND:PlayOnce(THEME:GetPathS("","Announcer/Crowd X"));
 
 if GAMESTATE:GetCurrentStage() == 'Stage_1st' then
 	t[#t+1] = LoadActor(THEME:GetPathS("","Announcer/1st Stage")).. {		

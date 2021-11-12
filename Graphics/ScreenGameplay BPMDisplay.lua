@@ -12,7 +12,13 @@ local t = Def.ActorFrame{}
 -- manual bpm display
 t[#t+1] = LoadFont("_squareslab711 lt bt Bold 24px")..{
 	Name="BPMDisplay";
-	InitCommand=function(s) s:draworder(101):zoomx(1.3):zoomy(1):shadowlength(1):y(SCREEN_BOTTOM-90) end,
+	InitCommand=function(s) s:draworder(101):zoomx(1.3):zoomy(1):shadowlength(1)
+		if ddrgame == "gold_" then
+			s:y(SCREEN_BOTTOM-90) 
+		else
+			s:y(SCREEN_BOTTOM-88) 
+		end;
+	end,
 };
 
 t.InitCommand=cmd(SetUpdateFunction,UpdateSingleBPM);

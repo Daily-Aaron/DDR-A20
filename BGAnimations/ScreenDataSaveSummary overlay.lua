@@ -23,13 +23,13 @@ function LoadPlayerStuff(Player)
 			InitCommand=function(self)
 				(cmd(y,-2;shadowlength,0;zoomy,0))(self);
 			end;
-			OnCommand=cmd(sleep,0.3;linear,0.3;zoomy,0.85;);
+			OnCommand=cmd(linear,0.3;zoomy,0.85;);
 		};
 	LoadActor( THEME:GetPathG("","ScreenSelectProfile/BG02") ) .. {
 			InitCommand=function(self)
 				(cmd(y,-0;zoomy,0))(self);
 			end;
-			OnCommand=cmd(sleep,0.3;linear,0.3;zoomy,1;);
+			OnCommand=cmd(linear,0.3;zoomy,1;);
 		};
 	};
 	t[#t+1] =Def.ActorFrame{
@@ -37,7 +37,7 @@ function LoadPlayerStuff(Player)
       InitCommand=function(self)
         (cmd(shadowlength,0))(self);
       end;
-      OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,-238;);
+      OnCommand=cmd(y,0;linear,0.3;y,-238;);
       OffCommand=cmd(linear,0.1;y,0;sleep,0;diffusealpha,0);
 	  LoadActor( THEME:GetPathG("","ScreenSelectProfile/"..ddrgame.."sceawi_frame_top") )..{
         InitCommand=function(self)
@@ -64,7 +64,7 @@ function LoadPlayerStuff(Player)
       InitCommand=function(self)
         (cmd(shadowlength,0))(self);
       end;
-      OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,224;);
+      OnCommand=cmd(y,0;linear,0.3;y,224;);
       OffCommand=cmd(linear,0.1;y,0;sleep,0;diffusealpha,0);
       LoadActor( THEME:GetPathG("","ScreenSelectProfile/"..ddrgame.."sceawi_frame_bottom") )..{
         InitCommand=cmd(valign,0);
@@ -174,7 +174,7 @@ function LoadPlayerStuff(Player)
         self:diffusealpha(0)
       end;
     };
-	t[#t+1] = LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_emblem_go") )..{ 
+	t[#t+1] = LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_emblem"..gl) )..{ 
       InitCommand=cmd(diffusealpha,0;zoom,0.35;x,70;y,140);
       OnCommand=function(self)
         if IsJoinFrame then
@@ -187,8 +187,23 @@ function LoadPlayerStuff(Player)
         self:diffusealpha(0)
       end;
     };
-	t[#t+1] = LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_gold") )..{ 
-      InitCommand=cmd(diffusealpha,0;zoom,0.64;x,145;y,142);
+	t[#t+1] = LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_none") )..{
+      InitCommand=cmd(diffusealpha,0;zoom,1;x,134;y,140);
+      OnCommand=function(self)
+        if IsJoinFrame then
+          (cmd(linear,0.3;diffusealpha,0))(self);
+        else
+			if GetUserPref("OptionRowGoldenLeague")=='OFF' then
+				self:sleep(0.7):linear(0.1):diffusealpha(1):zoom(1)
+			end;
+        end
+      end;
+      OffCommand=function(self)
+        self:diffusealpha(0)
+      end;
+    };
+	t[#t+1] = LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league"..gl) )..{ 
+      InitCommand=cmd(diffusealpha,0;zoom,0.58;x,145;y,142);
       OnCommand=function(self)
         if IsJoinFrame then
           (cmd(linear,0.3;diffusealpha,0))(self);
@@ -200,7 +215,6 @@ function LoadPlayerStuff(Player)
         self:diffusealpha(0)
       end;
     };
-
 	t[#t+1] = LoadActor( THEME:GetPathG("","ScreenSelectProfile/"..ddrgame..lang.."_sceawi_scene_guide_skip") )..{
 		Name = "FrameInstWord";
 		InitCommand=function(s) s:x(0):zoom(1)

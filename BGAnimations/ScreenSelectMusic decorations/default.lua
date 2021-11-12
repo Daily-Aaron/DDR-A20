@@ -14,7 +14,7 @@ local t = Def.ActorFrame{
 local Music = "/Themes/DDR A20/Sounds/ScreenSelectMusic music (loop).redir"
 local file = RageFileUtil.CreateRageFile()
 
-if ThemePrefs.Get("Version") == "A20" then
+if GetUserPref("OptionRowVersion")=='A20' then
     file:Open(Music,2)
     file:Write("MenuMusic/selmus/A20 Selmus (loop).ogg")
     file:Close()

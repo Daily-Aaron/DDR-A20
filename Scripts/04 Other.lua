@@ -6,18 +6,36 @@ function ThemeManager:GetAbsolutePath(sPath, optional)
 	return sFinPath
 end
 
-
-function cutin(player)
-	local ShowDancingCharacters = GetUserPrefB("FirstReMIX_ShowDancingCharacters");
-	local character = GAMESTATE:GetCharacter(player):GetCharacterID();
-	if not ShowDancingCharacters then
-		return false;
-	elseif character == "Afro" or character == "Lady" or character == "Emi" then
-		return true;
-	else
-		return false;
+gl = "_normal"
+function GoldenLeague()
+	if GetUserPref("OptionRowGoldenLeague")=='OFF' then
+		gl = "_normal"
+	elseif GetUserPref("OptionRowGoldenLeague")=='BRONZE' then
+		gl = "_brnd"
+	elseif GetUserPref("OptionRowGoldenLeague")=='SILVER' then
+		gl = "_silv"
+	elseif GetUserPref("OptionRowGoldenLeague")=='GOLD' then
+		gl = "_gold"
 	end;
 end;
+
+ddrgame = "gold_"
+function ChangeGame()
+		if GetUserPref("OptionRowModel")=='GOLD' then
+		ddrgame = "gold_"
+		else
+		ddrgame = "blue_"
+	end
+end
+
+version = "A20_"
+function ChangeVersion()
+		if GetUserPref("OptionRowVersion")=='A20' then
+		version = "A20_"
+		else
+		version = "A20+_"
+	end
+end
 
 function jacketpath(text, so)
 	if not text or text =="" then

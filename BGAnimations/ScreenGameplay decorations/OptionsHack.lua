@@ -261,10 +261,6 @@ function InitCoverPos(self, player, CoverPosition, pos, Mode, TwoCoverMode)
 end
 
 function ControlCoverPos(self, params, player, CoverPosition, Mode, TwoCoverMode)
-	-- if GAMESTATE:GetPlayerState(player):GetHealthState()=="HealthState_Dead" then
-		-- return;
-	-- end
-
 	if params.PlayerNumber == player then
 		local PlayerUID = PROFILEMAN:GetProfile(player):GetGUID(); 
 		
@@ -470,7 +466,7 @@ function AppearancePlusMain(pn)
 	
 	local pos = SCREEN_CENTER_X;
 	-- [ScreenGameplay] PlayerP#Player*Side(s)X
-	if center1P then
+	if PREFSMAN:GetPreference('Center1Player') and GAMESTATE:GetNumPlayersEnabled() == 1 and GAMESTATE:GetNumSidesJoined() == 1 then 
 		pos = SCREEN_CENTER_X
 	else
 		local metricName = string.format("PlayerP%i%sX",pNum,styleType)
@@ -569,6 +565,33 @@ function AppearancePlusMain(pn)
 	
 end;
 
+local button = {}
+local function AppearancePlusSound(event)
+	local pn= event.PlayerNumber
+	if event.type ~= "InputEventType_FirstPress" then return end
+	if button[event.button] and GAMESTATE:IsPlayerEnabled(pn) then
+		button[event.button]:play()
+	end
+end
+
+for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
+	local PlayerUID = PROFILEMAN:GetProfile(pn):GetGUID()
+	local MyValue = ReadOrCreateAppearancePlusValueForPlayer(PlayerUID,MyValue);
+		if MyValue == "Hidden+" or MyValue == "Sudden+" or MyValue == "Hidden+&Sudden+" then
+			t[#t+1] = Def.ActorFrame{
+			Def.Sound{
+				File = THEME:GetPathS("","HiddenPlusShow"), InitCommand = function(self)
+					button.Start = self
+				end
+			},
+			Def.ActorFrame{
+				OnCommand= function(self)
+					SCREENMAN:GetTopScreen():AddInputCallback(AppearancePlusSound)
+				end
+			}
+		};
+	end;
+end;
 
 retrieveMeterType();
  
@@ -638,11 +661,6 @@ else
 
 end
 
---local OptionsP1Song = GAMESTATE:GetPlayerState('PlayerNumber_P1'):GetPlayerOptionsString('ModsLevel_Song');
-
-  --Options Hack
-  
-
 if GAMESTATE:GetPlayMode()=="PlayMode_Oni" then
 	
 	if	GAMESTATE:IsPlayerEnabled('PlayerNumber_P1') then
@@ -663,37 +681,6 @@ if GAMESTATE:GetPlayMode()=="PlayMode_Oni" then
 	
 	GAMESTATE:SetFailTypeExplicitlySet();
  end
- 
- 
-
--- t[#t+1] = LoadFont("_helvetica-condensed-light 24px")..{
-			-- InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+0);
-			-- OnCommand=function(self)
-				-- self:settext(GAMESTATE:GetPlayerState('PlayerNumber_P1'):GetPlayerOptionsString('ModsLevel_Preferred'));
-				--self:settext("ModsLevelPrefered: "..OptionsP1P);
-				-- self:settext(GAMESTATE:GetCurrentTrail('PlayerNumber_P1'):GetTrailEntry(GAMESTATE:GetCourseSongIndex()):GetNormalModifiers());
-		-- end;
-		-- CurrentSongChangedMessageCommand=function(self)
-				-- self:settext(GAMESTATE:GetPlayerState('PlayerNumber_P1'):GetPlayerOptionsString('ModsLevel_Preferred'));
-				-- self:settext(OptionsP1);
-				-- self:settext(GAMESTATE:GetCurrentTrail('PlayerNumber_P1'):GetTrailEntry(GAMESTATE:GetCourseSongIndex()):GetNormalModifiers());
-		-- end;
-	-- };
-	
--- t[#t+1] = LoadFont("_helvetica-condensed-light 24px")..{
-			-- InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+100);
-			-- OnCommand=function(self)
-				-- self:settext(GAMESTATE:GetPlayerState('PlayerNumber_P1'):GetPlayerOptionsString('ModsLevel_Preferred'));
-				-- self:settext("ModsLevelSong: "..OptionsP1S);
-				
-				-- self:settext(GAMESTATE:GetCurrentTrail('PlayerNumber_P1'):GetTrailEntry(GAMESTATE:GetCourseSongIndex()):GetNormalModifiers());
-		-- end;
-		-- CurrentSongChangedMessageCommand=function(self)
-				-- self:settext(GAMESTATE:GetPlayerState('PlayerNumber_P1'):GetPlayerOptionsString('ModsLevel_Preferred'));
-				-- self:settext(OptionsP1);
-				-- self:settext(GAMESTATE:GetCurrentTrail('PlayerNumber_P1'):GetTrailEntry(GAMESTATE:GetCourseSongIndex()):GetNormalModifiers());
-		-- end;
-	-- };
 
 --ApplyOptions
 GAMESTATE:GetPlayerState('PlayerNumber_P1'):SetPlayerOptions('ModsLevel_Preferred',OptionsP1P);

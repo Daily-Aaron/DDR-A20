@@ -24,7 +24,7 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
 			InitCommand=function(self)
 				(cmd(y,-2;shadowlength,0;zoomy,0))(self);
 			end;
-			OnCommand=cmd(sleep,0.3;linear,0.3;zoomy,0.85;);
+			OnCommand=cmd(linear,0.3;zoomy,0.85;);
 			OffCommand=function(self)
 				if GetUserPref("OptionRowScreenCharacters")=='OFF' then
 					if IsJoinFrame then
@@ -39,7 +39,7 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
 			InitCommand=function(self)
 				(cmd(y,-0;zoomy,0))(self);
 			end;
-			OnCommand=cmd(sleep,0.3;linear,0.3;zoomy,1;);
+			OnCommand=cmd(linear,0.3;zoomy,1;);
 			OffCommand=function(self)
 				if GetUserPref("OptionRowScreenCharacters")=='OFF' then
 					if IsJoinFrame then
@@ -154,7 +154,7 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
         self:diffusealpha(0)
       end;
     };
-	LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_emblem_go") )..{ 
+	LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_emblem"..gl) )..{ 
       InitCommand=cmd(diffusealpha,0;zoom,0.35;x,70;y,140);
       OnCommand=function(self)
         if IsJoinFrame then
@@ -167,8 +167,23 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
         self:diffusealpha(0)
       end;
     };
-	LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_gold") )..{ 
-      InitCommand=cmd(diffusealpha,0;zoom,0.64;x,145;y,142);
+	LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league_none") )..{
+      InitCommand=cmd(diffusealpha,0;zoom,1;x,134;y,140);
+      OnCommand=function(self)
+        if IsJoinFrame then
+          (cmd(linear,0.3;diffusealpha,0))(self);
+        else
+			if GetUserPref("OptionRowGoldenLeague")=='OFF' then
+				self:sleep(0.7):linear(0.1):diffusealpha(1):zoom(1)
+			end;
+        end
+      end;
+      OffCommand=function(self)
+        self:diffusealpha(0)
+      end;
+    };
+	LoadActor( THEME:GetPathG("","ScreenSelectProfile/sceawi_league"..gl) )..{ 
+      InitCommand=cmd(diffusealpha,0;zoom,0.58;x,145;y,142);
       OnCommand=function(self)
         if IsJoinFrame then
           (cmd(linear,0.3;diffusealpha,0))(self);
@@ -185,7 +200,7 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
 		InitCommand=function(self)
 			(cmd(shadowlength,0))(self);
 		end;
-		OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,-238;);
+		OnCommand=cmd(y,0;linear,0.3;y,-238;);
 		OffCommand=function(self)
 			if GetUserPref("OptionRowScreenCharacters")=='OFF' then
 				if IsJoinFrame then
@@ -220,7 +235,7 @@ function LoadCard(cColor,cColor2,Player,IsJoinFrame)
 		InitCommand=function(self)
 			(cmd(shadowlength,0))(self);
 		end;
-		OnCommand=cmd(y,0;sleep,0.3;linear,0.3;y,224;);
+		OnCommand=cmd(y,0;linear,0.3;y,224;);
 		OffCommand=function(self)
 			if GetUserPref("OptionRowScreenCharacters")=='OFF' then
 				if IsJoinFrame then
@@ -479,7 +494,6 @@ local t = Def.ActorFrame {
 		Def.ActorFrame {
 			Name = 'P1Frame';
 			InitCommand=cmd(x,SCREEN_CENTER_X-320;y,SCREEN_CENTER_Y+14);
-      OnCommand=cmd(zoomx,0;linear,0.2;zoomx,1);
 			OffCommand=cmd();
 			PlayerJoinedMessageCommand=function(self,param)
 				if param.Player == PLAYER_1 then
@@ -491,7 +505,6 @@ local t = Def.ActorFrame {
 		Def.ActorFrame {
 			Name = 'P2Frame';
 			InitCommand=cmd(x,SCREEN_CENTER_X+320;y,SCREEN_CENTER_Y+14);
-      OnCommand=cmd(zoomx,0;linear,0.2;zoomx,1);
 			OffCommand=cmd();
 			PlayerJoinedMessageCommand=function(self,param)
 				if param.Player == PLAYER_2 then
@@ -504,13 +517,13 @@ local t = Def.ActorFrame {
 		LoadActor( THEME:GetPathS("Common","start") )..{
 			StartButtonMessageCommand=cmd(play);
 		};
-		LoadActor( THEME:GetPathS("","Profile_start") )..{
+		LoadActor( THEME:GetPathS("Profile","Start") )..{
 			StartButtonMessageCommand=cmd(play);
 		};
 		LoadActor( THEME:GetPathS("Common","cancel") )..{
 			BackButtonMessageCommand=cmd(play);
 		};
-		LoadActor( THEME:GetPathS("","Profile_Move") )..{
+		LoadActor( THEME:GetPathS("Profile","Move") )..{
 			DirectionButtonMessageCommand=cmd(play);
 		};
 	};

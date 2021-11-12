@@ -1,12 +1,9 @@
 local t = Def.ActorFrame{};
 local dt = 1.235;
 
---Hacky way to get the transition.
-t[#t+1] = Def.ActorFrame {
-	LoadActor(THEME:GetPathS("","Close")) .. {
-		OnCommand=cmd(queuecommand,"Play");
-		PlayCommand=cmd(play);
-	};
+t[#t+1] = LoadActor(THEME:GetPathS("","Close")) .. {
+	OnCommand=cmd(queuecommand,"Play");
+	PlayCommand=cmd(play);
 };
 
 if ddrgame=="gold_" then
@@ -36,103 +33,92 @@ t[#t+1] = Def.ActorFrame{
 	};
 };
 else
-t[#t+1] = Def.ActorFrame{
-	Def.Sprite{
-		Texture="_blue doors/bluebg";
-		InitCommand=function(self)
-			self:FullScreen()
-		end;
+t[#t+1] = Def.Sprite{
+	Texture="_blue doors/bluebg";
+	InitCommand=function(self)
+		self:FullScreen()
+	end;
 	};
-};
 end;
 
 t[#t+1] = LoadActor(THEME:GetPathB("","_blue doors/scsh_back03_blue"))..{
 	OnCommand=cmd(FullScreen;diffusealpha,0;diffusealpha,1;linear,0.083;sleep,1;diffusealpha,0;);
-		};
+};
 
 t[#t+1] = LoadActor(THEME:GetPathB("","_blue doors/backflashhor (doubleres)"))..{
 	InitCommand=cmd(x,-440;y,360;zoom,2;diffusealpha,1;);
 	OnCommand=cmd(sleep,0.7;linear,0.3;addx,663;diffusealpha,0.5;linear,0.05;diffusealpha,0;);
-		};
+};
+
 t[#t+1] = LoadActor(THEME:GetPathB("","_blue doors/backflashhor (doubleres)"))..{
 	InitCommand=cmd(x,1720;y,360;zoom,-2;diffusealpha,1;);
 	OnCommand=cmd(sleep,0.7;linear,0.3;addx,-663;diffusealpha,0.5;linear,0.05;diffusealpha,0;);
-		};
+};
+
 t[#t+1] = LoadActor(THEME:GetPathB("","_blue doors/backflashvert (doubleres)"))..{
 	InitCommand=cmd(x,640;y,-480;zoom,2;diffusealpha,1;);
 	OnCommand=cmd(sleep,0.65;linear,0.25;addy,665;diffusealpha,0.5;linear,0.05;diffusealpha,0;);
-		};
+};
+
 t[#t+1] = LoadActor(THEME:GetPathB("","_blue doors/backflashvert (doubleres)"))..{
 	InitCommand=cmd(x,640;y,1210;zoom,-2;diffusealpha,1;);
 	OnCommand=cmd(sleep,0.65;linear,0.25;addy,-660;diffusealpha,0.5;linear,0.05;diffusealpha,0;);
-		};
+};
 
 t[#t+1] = LoadActor(THEME:GetPathB("","_blue doors/origwhiteflash"))..{
 	OnCommand=cmd(FullScreen;zoom,2;diffusealpha,0;diffusealpha,0;linear,0.1;sleep,0.9;diffusealpha,1;linear,0.2;diffusealpha,0;);
-		};
-
-
+};
 
 t[#t+1] = Def.ActorFrame{
 	InitCommand=cmd(CenterX);
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_blue"))..{
 		InitCommand=cmd(x,-321;y,SCREEN_TOP+87;diffusealpha,0;;zoomx,-1);
-    OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,110;diffusealpha,1;);
+		OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,110;diffusealpha,1;);
 	};
+	
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_blue"))..{
 		InitCommand=cmd(x,321;y,SCREEN_BOTTOM-87;diffusealpha,0;zoomy,-1);
-    OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-110;diffusealpha,1;);
+		OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-110;diffusealpha,1;);
 	};
-}
-t[#t+1] = Def.ActorFrame{
-	InitCommand=cmd(CenterX);
+	
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_blue"))..{
 		InitCommand=cmd(x,321;y,SCREEN_TOP+87;diffusealpha,0;;zoom,1);
-    OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,110;diffusealpha,1;);
+		OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,110;diffusealpha,1;);
 	};
+	
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_blue"))..{
 		InitCommand=cmd(x,-321;y,SCREEN_BOTTOM-87;zoomy,-1;diffusealpha,0;zoom,-1);
-    OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-110;diffusealpha,1;);
+		OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-110;diffusealpha,1;);
 	};
-}
-
---Lines
-t[#t+1] = Def.ActorFrame{
-	InitCommand=cmd(CenterX);
+	
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_light_blue"))..{
 		InitCommand=cmd(x,-321;y,SCREEN_TOP+75;diffusealpha,0;zoomx,-1);
-    OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
+		OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
 	};
+	
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_light_blue"))..{
 		InitCommand=cmd(x,321;y,SCREEN_BOTTOM-75;diffusealpha,0;zoomy,-1);
-   OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
+		OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
 	};
-};
-t[#t+1] = Def.ActorFrame{
-	InitCommand=cmd(CenterX);
+	
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_light_blue"))..{
 		InitCommand=cmd(x,321;y,SCREEN_TOP+75;diffusealpha,0;zoom,1);
-   OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
+		OnCommand=cmd(addy,-99;sleep,0.2;linear,0.1;addy,99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
 	};
 	LoadActor(THEME:GetPathB("","_blue doors/"..ddrgame.."scsh_back02_light_blue"))..{
 		InitCommand=cmd(x,-321;y,SCREEN_BOTTOM-75;zoomy,-1;diffusealpha,0;zoom,-1);
-    OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
+		OnCommand=cmd(addy,99;sleep,0.2;linear,0.1;addy,-99;diffusealpha,0;sleep,0;linear,1.5;diffusealpha,0.5;);
 	};
-};
-
-
-
-
-t[#t+1] = Def.ActorFrame{
-	InitCommand=cmd(CenterX);
+	
 	LoadActor(THEME:GetPathB("","_blue doors/backflashvert (doubleres)"))..{
 		InitCommand=cmd(y,SCREEN_TOP+1100;diffusealpha,0.75;zoom,-2;);
-    OnCommand=cmd(linear,0.2;addy,-1500;diffusealpha,0.75;);
+		OnCommand=cmd(linear,0.2;addy,-1500;diffusealpha,0.75;);
 	};
+	
 	LoadActor(THEME:GetPathB("","_blue doors/backflashvert (doubleres)"))..{
 		InitCommand=cmd(y,SCREEN_BOTTOM-1100;diffusealpha,0.75;zoom,2;);
-    OnCommand=cmd(linear,0.2;addy,1500;diffusealpha,0.75;);
+		OnCommand=cmd(linear,0.2;addy,1500;diffusealpha,0.75;);
 	};
-}
+};
 
 return t

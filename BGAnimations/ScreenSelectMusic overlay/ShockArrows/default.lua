@@ -57,9 +57,6 @@ local function CreatPanelDisplayShockArrowIcon(_pnPlayer, _sLabel, _rcRadarCateg
 		LoadActor( "difficulty_shockarrow_eff.png" )..{
 			InitCommand=cmd(diffuseshift;effectcolor1,color("1,1,1,1");effectcolor2,color("1,1,1,0.8");effectperiod,0.2);
 		};
-		LoadActor("../../../Graphics/_No banner.png")..{
-		InitCommand=function(s) s:Center():zoom(1.2) end,
-		};
 	};
 end;
 

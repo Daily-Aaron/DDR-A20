@@ -42,9 +42,19 @@ t[#t+1] = Def.ActorFrame {
 	};
 };
 
+if GetUserPref("OptionRowModel")=='GOLD' then
+	if GetUserPref("OptionRowGoldenLeague")=='BRONZE' or 
+	   GetUserPref("OptionRowGoldenLeague")=='SILVER' or 
+	   GetUserPref("OptionRowGoldenLeague")=='GOLD' 
+	then
+		t[#t+1] = LoadActor("doors_gl");
+	else
+		t[#t+1] = LoadActor("doors_normal");
+	end;
+else
+	t[#t+1] = LoadActor("doors_normal");
+end;	
 
-t[#t+1] = LoadActor("doors.lua");
-	
 t[#t+1] = Def.ActorFrame {
 	LoadActor("jacket-bg")..{
 		InitCommand=cmd(setsize,451,451;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+480/2;vertalign,bottom);
@@ -131,15 +141,15 @@ t[#t+1] = Def.ActorFrame {
 
 
 t[#t+1] = LoadActor(THEME:GetPathB("","/_blue doors/cosh_loading.png"))..{
-	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-105;zoom,1;sleep,1;linear,0.501;zoom,0.9;addy,5;sleep,0.4;linear,0.033;zoomx,0;zoomy,3);
+	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-105;zoom,1;sleep,1;linear,0.501;zoom,0.9;addy,5;sleep,0.4;linear,0.033;zoomx,3;zoomy,0);
 };
 
 t[#t+1] = LoadActor(THEME:GetPathB("","/_blue doors/cosh_loading_frame.png"))..{
-	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-70;zoom,1.2;sleep,1;linear,0.501;zoom,1.05;sleep,0.4;linear,0.033;zoomx,0;zoomy,3);
+	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-70;zoom,1.2;sleep,1;linear,0.501;zoom,1.05;sleep,0.4;linear,0.033;zoomx,3;zoomy,0);
 };
 
 t[#t+1] = LoadActor(THEME:GetPathB("","/_blue doors/cosh_loading_meter.png"))..{
-	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-70;zoom,1.2;cropright,1;sleep,1;linear,0.501;zoom,1.05;cropright,0;sleep,0.4;linear,0.033;zoomx,0;zoomy,3);
+	InitCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_BOTTOM-70;zoom,1.2;cropright,1;sleep,1;linear,0.501;zoom,1.05;cropright,0;sleep,0.4;linear,0.033;zoomx,3;zoomy,0);
 };
 
 t[#t+1] = LoadActor("ScoreDisplay");

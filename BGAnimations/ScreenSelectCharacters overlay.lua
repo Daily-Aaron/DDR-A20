@@ -74,8 +74,8 @@ local Controller = Def.ActorFrame{
 };
 
 local SoundBank = Def.ActorFrame{ OnCommand=function(self) SBank = self end;
-	Def.Sound{Name="StartSound",File=THEME:GetPathS("", "Common start")},
-	Def.Sound{Name="MoveChoice",File=THEME:GetPathS("", "Profile_Move")},
+	Def.Sound{Name="StartSound",File=THEME:GetPathS("Common","start")},
+	Def.Sound{Name="MoveChoice",File=THEME:GetPathS("Profile","Move")},
 	Def.Sound{Name="CancelSound",File=THEME:GetPathS("Common","cancel")},
 };
 
@@ -109,7 +109,13 @@ local function TestActorScroller()
 	local t = Def.ActorFrame{}
 	for value in ivalues(CharList) do
 		local Result = Def.ActorFrame{
-		
+			LoadFont("_sveningsson Bold 60px") ..{
+				OnCommand=function(self)
+					self:zoom(0.27):y(SCREEN_TOP-215):shadowlength(1):diffuse(Color.White):maxwidth(500)
+					self:settext(value:GetDisplayName())
+				end;
+				OffCommand=function(s) s:linear(0.2):diffusealpha(0) end,
+			};
 			Def.Model{
 				Materials = value:GetModelPath();
 				Meshes = value:GetModelPath();
@@ -135,13 +141,6 @@ local function TestActorScroller()
 					self:zoom(13) 
 				end;
 				end,
-			OffCommand=function(s) s:linear(0.2):diffusealpha(0) end,
-			};
-			LoadFont("_sveningsson Bold 60px") ..{
-			OnCommand=function(self)
-				self:zoom(0.27):y(SCREEN_TOP-215):shadowlength(1):diffuse(Color.White):maxwidth(500)
-				self:settext(value:GetDisplayName())
-			end;
 			OffCommand=function(s) s:linear(0.2):diffusealpha(0) end,
 			};
 		};

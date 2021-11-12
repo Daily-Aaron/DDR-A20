@@ -4,20 +4,6 @@ local t = Def.ActorFrame{
     StandardDecorationFromFileOptional("Footer","Footer");
 }
 
-
-if GAMESTATE:HasEarnedExtraStage() then
-	t[#t+1] = LoadActor( THEME:GetPathS("","_silent") ) .. {
-		PlayCommand=cmd(play);
-		OnCommand=cmd(queuecommand,"Play");
-	};
-else
-	t[#t+1] = LoadActor( THEME:GetPathS("","MenuMusic/results/"..version.."Results")) .. {
-		PlayCommand=cmd(play);
-		OnCommand=cmd(sleep,2.4;queuecommand,"Play");
-	};
-end;
-
-
 for _,pn in pairs(GAMESTATE:GetEnabledPlayers()) do
 	t[#t+1] = Def.ActorFrame{
 		InitCommand=function(s) s:xy(pn==PLAYER_1 and _screen.cx-319 or _screen.cx+319,_screen.cy+268):zoom(0.9) end,
@@ -86,7 +72,10 @@ for _,pn in pairs(GAMESTATE:GetEnabledPlayers()) do
         Def.RollingNumbers{
             File=version..ddrgame.."ScreenEvaluation ScoreNumber",
             InitCommand=function(s)
-                s:x(0):playcommand("Set")
+				if version == "A20+_" then
+					s:zoom(0.96):x(10)
+				end;
+                s:playcommand("Set")
             end,
             OffCommand=function(s) s:sleep(0.067):zoom(0) end,
             SetCommand=function(s)
@@ -225,9 +214,6 @@ if not PREFSMAN:GetPreference("EventMode") then
 end;
 
 return Def.ActorFrame{
-    LoadActor( THEME:GetPathS("ScreenEvaluationNormal", "music") ) .. {
-		OnCommand=cmd(play);
-	};
     t;
     Def.ActorFrame{
         Name="Jacket";
