@@ -62,34 +62,6 @@ t[#t+1] = Def.ActorFrame{
 	end;
 	};
 
-	LoadActor(THEME:GetPathB("","_blue doors/scsh_flare1"..gl))..{
-		InitCommand=function(s) s:xy(_screen.cx,_screen.cy-200):zoom(2.5) end,
-		OnCommand=function(self)
-			self:diffusealpha(0);
-			self:zoom(3);
-			self:sleep(dt);
-			self:linear(0.264);
-			self:diffusealpha(0.15);
-			self:zoom(2.5);
-			self:blend('BlendMode_Add');
-			self:linear(2.5);
-			self:rotationz(-100);
-		end;
-	};
-	LoadActor(THEME:GetPathB("","_blue doors/scsh_flare1"..gl))..{
-		InitCommand=function(s) s:xy(_screen.cx,_screen.cy-200):zoom(2.5) end,
-		OnCommand=function(self)
-			self:diffusealpha(0);
-			self:zoom(3);
-			self:sleep(dt);
-			self:linear(0.264);
-			self:diffusealpha(0.15);
-			self:zoom(2.5);
-			self:blend('BlendMode_Add');
-			self:linear(2.5);
-			self:rotationz(-100);
-		end;
-	};
 	LoadActor(THEME:GetPathB("","_blue doors/scsh_light1"..gl))..{
 		InitCommand=function(s) s:Center() end,
 		OnCommand=function(self)
